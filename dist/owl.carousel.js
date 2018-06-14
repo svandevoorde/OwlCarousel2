@@ -863,15 +863,16 @@
 		$(document).off('.owl.core');
 
 		this.$element.removeClass(this.options.grabClass);
+		if (this.closest(stage.x, delta.x !== 0 ? direction : this._drag.direction) !== -1) {
+			if (delta.x !== 0 && this.is('dragging') || !this.is('valid')) {
+				this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed);
+				this.current(this.closest(stage.x, delta.x !== 0 ? direction : this._drag.direction));
+				this.invalidate('position');
+				this.update();
 
-		if (delta.x !== 0 && this.is('dragging') || !this.is('valid')) {
-			this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed);
-			this.current(this.closest(stage.x, delta.x !== 0 ? direction : this._drag.direction));
-			this.invalidate('position');
-			this.update();
-
-			this._drag.direction = direction;
-			this._drag.target.one('click.owl.core', function() { return false; });
+				this._drag.direction = direction;
+				this._drag.target.one('click.owl.core', function() { return false; });
+		}
 		}
 
 		if (!this.is('dragging')) {
