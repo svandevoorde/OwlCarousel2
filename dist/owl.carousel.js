@@ -3011,7 +3011,7 @@
 
 		// create DOM structure for absolute navigation
 		if (!settings.dotsData) {
-			this._templates = [ $('<button role="button">')
+			this._templates = [ $('<button role="button" alt="owl navigation dot">')
 				.addClass(settings.dotClass)
 				.append($('<span>'))
 				.prop('outerHTML') ];
